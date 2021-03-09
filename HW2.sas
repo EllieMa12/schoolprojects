@@ -3,7 +3,7 @@ LIBNAME ORION BASE "/folders/myfolders/OrionDB";
 Question1 (a);
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select 
   sum(case when int(('01JAN2015'd-Birth_Date)/365.25)< 50 then Salary else 0 end)/ sum(case when int(('01JAN2015'd-Birth_Date)/365.25)< 50 then 1 else 0 end) as under 'Under 50' format=dollar10.2,
@@ -17,7 +17,7 @@ title;
 
 Question1 (b);
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select avg(u.over_u) as U 'Under 50' format= dollar10.2,
       (select avg(o.over_o) 
@@ -38,10 +38,10 @@ quit;
 title;
 
 
-/For verifying whether the results of the query above are correct/;
+/For verifying if the results of the query above are correct/;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select 
 sum(case when int(('01JAN2015'd-Birth_Date)/365.25)< 50 and Salary>41582.74 then Salary else 0 end)/ sum(case when int(('01JAN2015'd-Birth_Date)/365.25)< 50 and Salary>41582.74 then 1 else 0 end) as under 'Under 50' format=dollar10.2,
@@ -57,7 +57,7 @@ title;
 Question2;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select avg(m.diff_M) as M 'Avg Salary Differential for Male' format= dollar10.2,
    (select avg(f.diff_F) 
@@ -81,7 +81,7 @@ title;
 /For verifying whether the results of the query above are correct/;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select avg(av.diff_M) 'Avg Salary Differential for Male' format=dollar10.2
        
@@ -95,7 +95,7 @@ quit;
 title;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select avg(av.diff_F) 'Avg Salary Differential for Female' format=dollar10.2
 
@@ -113,7 +113,7 @@ title;
 Question3;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select distinct ei.Manager_ID 'Manager ID',
        sum(.05*pt.TP) as Commission 'Commission' format= dollar9.2     
@@ -147,7 +147,7 @@ title;
 Question4;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select id.Customer_ID 'Customer ID',
        Customer_Name 'Customer Name'
