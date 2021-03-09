@@ -13,7 +13,7 @@ create table sales_department as
 quit;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select Employee_ID 'Employee ID', 
        Job_Title 'Job Title', 
@@ -86,7 +86,7 @@ create table Bonus_5 as
   where Salary<=30000;
 quit;
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select * from WORK.BONUS_1
  union
@@ -122,83 +122,6 @@ quit;
 Question3A;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
-
-select 
- case 
-  when HOUR(start_time)=0 then 0
-  when HOUR(start_time)=1 then 1
-  when HOUR(start_time)=2 then 2
-  when HOUR(start_time)=3 then 3
-  when HOUR(start_time)=4 then 4
-  when HOUR(start_time)=5 then 5
-  when HOUR(start_time)= 6 then 6
-  when HOUR(start_time)= 7 then 7
-  when HOUR(start_time)= 8 then 8
-  when HOUR(start_time)= 9 then 9
-  when HOUR(start_time)= 10 then 10
-  when HOUR(start_time)= 11 then 11
-  when HOUR(start_time)= 12 then 12
-  when HOUR(start_time)= 13 then 13
-  when HOUR(start_time)= 14 then 14
-  when HOUR(start_time)= 15 then 15
-  when HOUR(start_time)= 16 then 16
-  when HOUR(start_time)= 17 then 17
-  when HOUR(start_time)= 18 then 18
-  when HOUR(start_time)= 19 then 19
-  when HOUR(start_time)= 20 then 20
-  when HOUR(start_time)= 21 then 21
-  when HOUR(start_time)= 22 then 22
-  else 23
- end as Hour,
- count(trip_id) as Rentals 'No. of rentals (Weekends)'
- from orion.bikesharing_t3
- where WEEKDAY(start_date)=1 or WEEKDAY(start_date)= 7
- Group by Hour;
-quit;
-
-title;
-
-proc sql;
-title 'z5249090 and MA CHENXI';
-
-select 
- case 
-  when HOUR(start_time)=0 then 0
-  when HOUR(start_time)=1 then 1
-  when HOUR(start_time)=2 then 2
-  when HOUR(start_time)=3 then 3
-  when HOUR(start_time)=4 then 4
-  when HOUR(start_time)=5 then 5
-  when HOUR(start_time)= 6 then 6
-  when HOUR(start_time)= 7 then 7
-  when HOUR(start_time)= 8 then 8
-  when HOUR(start_time)= 9 then 9
-  when HOUR(start_time)= 10 then 10
-  when HOUR(start_time)= 11 then 11
-  when HOUR(start_time)= 12 then 12
-  when HOUR(start_time)= 13 then 13
-  when HOUR(start_time)= 14 then 14
-  when HOUR(start_time)= 15 then 15
-  when HOUR(start_time)= 16 then 16
-  when HOUR(start_time)= 17 then 17
-  when HOUR(start_time)= 18 then 18
-  when HOUR(start_time)= 19 then 19
-  when HOUR(start_time)= 20 then 20
-  when HOUR(start_time)= 21 then 21
-  when HOUR(start_time)= 22 then 22
-  else 23
- end as Hour,
- count(trip_id) as Rentals 'No. of rentals (Weekdays)'
- from orion.bikesharing_t3
- where WEEKDAY(start_date)<>1 and WEEKDAY(start_date)<>7
- Group by Hour;
-quit;
-
-title;
-
-ANSWER;
-proc sql;
 select Hour(start_time) as hour 'Hour', count(trip_id) 'No. of rentals'
    from orion.bikesharing_t3
    where 1 < weekday(start_date) < 7 
@@ -215,7 +138,7 @@ quit;
 Question3B;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select passholder_type 'passholder type',
        sum(1 <=month(start_date)<= 3)/ count(*) as q1 format=percent6.0 'Jan-Mar',
@@ -231,35 +154,6 @@ title;
 
 Question4;
 
-proc sql;
-create table Profit as
-  select 
-  DISTINCT(Employee_ID), 
-   sum(Total_Retail_Price-CostPrice_Per_Unit*Quantity)
-   as TP format=dollar12.2 'Total Profit'
-  from orion.order_fact
-  where '01JAN2011'd <=Order_date<= '31DEC2011'd and Employee_ID <> 99999999                   
-  group by Employee_ID;
-quit;
-
-proc sql;
-create table ID as
-  select Employee_ID, Employee_Name 'Name'
-  from orion.salesstaff;
-quit;
-
-proc sql; 
-title 'z5249090 and MA CHENXI';
-
-select DISTINCT(Employee_Name), TP 
-from WORK.ID, WORK.PROFIT
-where ID. Employee_ID= PROFIT. Employee_ID
-order by TP desc;
-quit;
-
-title;
-
-ANSWER;
 proc sql;
 select a.Employee_Name 'Name', 
        sum(o.Total_Retail_Price-o.CostPrice_Per_Unit*o.Quantity) as value 'Total profit' format=dollar9.2
@@ -277,7 +171,7 @@ quit;
 Question5;
 
 proc sql;
-title 'z5249090 and MA CHENXI';
+title 'EllieMa';
 
 select 
  Customer_ID,
